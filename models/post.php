@@ -16,10 +16,12 @@ class Post
         try {
             $db = DB::getInstance();
             $req = $db->query('SELECT * FROM posts');
-            foreach ($req->fetchAll() as $item) {
-                $list[] = new Post($item['id'], $item['title'], $item['content']);
-            }
-            return $list;
+            // foreach ($req->fetchAll() as $item) {
+            //     $list[] = new Post($item['id'], $item['title'], $item['content']);
+            // }
+            // return $list;
+            $req->setFetchMode(PDO::FETCH_ASSOC);
+            return $req;
         } catch (Exception $e) {
             print("Error: "+$e);
         }

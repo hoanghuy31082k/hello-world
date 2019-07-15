@@ -10,10 +10,7 @@ class PagesController extends BaseController
 
   public function home()
   {
-    $data = array(
-      'name' => 'Bun đẹp trai',
-      'age' => 19
-    );
+    $data = new Post::all;
     $this->render('home', $data);
   }
 
