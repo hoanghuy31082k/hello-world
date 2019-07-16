@@ -1,7 +1,6 @@
 <?php
 $controllers = array(
   'pages' => ['home', 'error'],
-  'posts' => ['index','add','update','delete'],
 );
 if (!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller])) {
   $controller = 'pages';
