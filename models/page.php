@@ -15,7 +15,7 @@ class Page
         $list = [];
         try {
             $db = DB::getInstance();
-            $req = $db->query('SELECT * FROM listid');
+            $req = $db->query('SELECT * FROM dsnv');
             foreach ($req->fetchAll() as $item) {
                 $list[] = new Page($item['id'], $item['ten'], $item['tuoi']);
             }
@@ -28,7 +28,7 @@ class Page
         $list = [];
         try {
             $db = DB::getInstance();
-            $req = $db -> query('SELECT * FROM list WHERE $id = :id');
+            $req = $db -> query('SELECT * FROM dsnv WHERE $id = :id');
             foreach ($req->fetchAll() as $item) {
                 $list[] = new Page($item['id'], $item['ten'], $item['tuoi']);
             }

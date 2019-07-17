@@ -16,14 +16,14 @@ class PagesController extends BaseController
     $this->render('home', $data);
   }
 
-  public function home()
+  public function timkiem()
   {
     $id = $_POST['thongtin'];
     $pages = Page::timkiem($id);
     $data = array('pages' => $pages);
     $this->render('timkiem', $data);
   }
-  
+
   public function error()
   {
     $this->render('error');

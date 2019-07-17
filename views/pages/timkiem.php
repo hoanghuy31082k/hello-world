@@ -1,4 +1,7 @@
+<input type="text" name="thongtin">
+<input type="submit" name="kiem">
 <table class="table">
+	<h1>Danh sách thành viên</h1>
 	<thead>
 		<tr>
 			<th>ID</th>
