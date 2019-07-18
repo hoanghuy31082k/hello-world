@@ -6,7 +6,7 @@ class PagesController extends BaseController
 {
   function __construct()
   {
-    $this->folder = 'dsnv';
+    $this->folder = 'pages';
   }
 
   public function home()
@@ -18,10 +18,17 @@ class PagesController extends BaseController
 
   public function timkiem()
   {
-    $id = $_POST['thongtin'];
+    if(isset($_GET['tukhoa'])) {
+      $id = $_GET['tukhoa'];
+    }
     $pages = Page::timkiem($id);
     $data = array('pages' => $pages);
     $this->render('timkiem', $data);
+  }
+
+  public function xoabang()
+  {
+    $this->render('xoabang');
   }
 
   public function error()

@@ -1,5 +1,3 @@
-<input type="text" name="thongtin">
-<input type="submit" name="kiem">
 <table class="table">
 	<h1>Danh sách thành viên</h1>
 	<thead>
@@ -11,10 +9,12 @@
 	</thead>
 	<tbody>
 		<tr>
-			<?php foreach ($data as $row): ?>
-				<td><?php echo $row["ID"]; ?></td>
-				<td><?php echo $row["TEN"]; ?></td>
-				<td><?php echo $row["TUOI"]; ?></td>
+			<?php foreach ($pages as $row): ?>
+				<tr>
+					<td><?php echo $row->id; ?></td>
+					<td><?php echo $row->hoten; ?></td>
+					<td><?php echo $row->tuoi; ?></td>
+				</tr>
 			<?php endforeach ?>
 		</tr>
 	</tbody>
@@ -32,7 +32,7 @@
         <p>Bạn có muốn xoá database hay không?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" style="color: Green" data-dismiss="modal">Có</button>
+        <a href="?controller=pages&action=xoabang"><button type="button" class="btn btn-default" style="color: Green" data-dismiss="modal">Có</button></a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
       </div>
     </div>

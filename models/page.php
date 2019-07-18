@@ -2,12 +2,12 @@
 class Page
 {
     public $id;
-    public $ten;
+    public $hoten;
     public $tuoi;
-    public function __construct($id, $ten, $tuoi)
+    public function __construct($id, $hoten, $tuoi)
     {
         $this->id = $id;
-        $this->ten = $ten;
+        $this->hoten = $hoten;
         $this->tuoi = $tuoi;
     }
     public static function getData()
@@ -17,7 +17,7 @@ class Page
             $db = DB::getInstance();
             $req = $db->query('SELECT * FROM dsnv');
             foreach ($req->fetchAll() as $item) {
-                $list[] = new Page($item['id'], $item['ten'], $item['tuoi']);
+                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
             }
             return $list;
         } catch (Exception $e) {
@@ -28,13 +28,22 @@ class Page
         $list = [];
         try {
             $db = DB::getInstance();
-            $req = $db -> query('SELECT * FROM dsnv WHERE $id = :id');
+            $req = $db -> query('SELECT * FROM dsnv WHERE $id=$id');
             foreach ($req->fetchAll() as $item) {
-                $list[] = new Page($item['id'], $item['ten'], $item['tuoi']);
+                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
             }
             return $list;
         } catch (Exception $e) {
             print("Error: "+$e);
+        }
+    }
+    public static function xoabang() {
+        try {
+            $db = DB::getInstance();
+            $result = $db -> query('DROP TABLE dsnv');
+            return $result;
+        } catch (Exception $e) {
+            echo "Không còn bảng để xoá";
         }
     }
 }
