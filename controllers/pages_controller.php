@@ -21,14 +21,22 @@ class PagesController extends BaseController
     if(isset($_GET['tukhoa'])) {
       $id = $_GET['tukhoa'];
     }
-    $pages = Page::timkiem($id);
+    $pages_s = Page::timkiem($id);
     $data = array('pages' => $pages);
     $this->render('timkiem', $data);
   }
 
   public function xoabang()
   {
-    $this->render('xoabang');
+    if(isset($_GET['id'])) {
+      $id = $_GET['id'];
+      $pages = Page::xoabang($id);
+      $data = array('pages' => $pages);
+      $this->render('home', $data);
+    }
+    else {
+      PagesController::home;
+    }
   }
 
   public function error()

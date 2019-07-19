@@ -9,33 +9,34 @@
 	</thead>
 	<tbody>
 		<tr>
-			<?php foreach ($pages as $row): ?>
+			<?php foreach ($pages_s as $row): ?>
 				<tr>
 					<td><?php echo $row->id; ?></td>
 					<td><?php echo $row->hoten; ?></td>
 					<td><?php echo $row->tuoi; ?></td>
+					<td>
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="width: 90px; height: 30px ; font-size: 15px; float: center;">Xoá bảng</button>
+						<div id="myModal" class="modal fade" role="dialog">
+						  <div class="modal-dialog">
+
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal">&times;</button>
+						        <h4 class="modal-title">Yêu cầu nho nhỏ :))</h4>
+						      </div>
+						      <div class="modal-body">
+						        <p>Bạn có muốn xoá database hay không?</p>
+						      </div>
+						      <div class="modal-footer">
+						        <a href="?controller=pages&action=xoabang&id=<?php echo $row->id; ?>" class="btn btn-default" style="color: green">Có</a>
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</td>
 				</tr>
 			<?php endforeach ?>
 		</tr>
 	</tbody>
 </table>
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Xoá bảng</button>
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Yêu cầu nho nhỏ :))</h4>
-      </div>
-      <div class="modal-body">
-        <p>Bạn có muốn xoá database hay không?</p>
-      </div>
-      <div class="modal-footer">
-      	<a href="?controller=pages&action=xoabang"><button type="button" class="btn btn-default" style="color: Green" data-dismiss="modal">Có</button></a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
-      </div>
-    </div>
-
-  </div>
-</div>

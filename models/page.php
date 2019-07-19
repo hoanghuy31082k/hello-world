@@ -28,7 +28,7 @@ class Page
         $list = [];
         try {
             $db = DB::getInstance();
-            $req = $db -> query('SELECT * FROM dsnv WHERE $id=$id');
+            $req = $db -> query('SELECT * FROM dsnv WHERE id=$id');
             foreach ($req->fetchAll() as $item) {
                 $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
             }
@@ -37,13 +37,17 @@ class Page
             print("Error: "+$e);
         }
     }
-    public static function xoabang() {
+    public static function xoabang($id) {
+        $list = [];
         try {
             $db = DB::getInstance();
-            $result = $db -> query('DROP TABLE dsnv');
-            return $result;
+            $req = $db -> query('DELETE FROM dsnv WHERE id = "$id"');
+            foreach ($req->fetchAll() as $item) {
+                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+            }
+            return $list;
         } catch (Exception $e) {
-            echo "Không còn bảng để xoá";
+            print("Error: "+$e);
         }
     }
 }
