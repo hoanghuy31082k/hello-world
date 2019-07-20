@@ -29,8 +29,12 @@ class PagesController extends BaseController
   public function xoabang()
   {
     if(isset($_GET['id'])) {
+      # Get id từ URL 
       $id = $_GET['id'];
-      $pages = Page::xoabang($id);
+      # Call function Delete từ Model  
+      $status = Page::xoabang($id);
+      # Đây là function load lại page ---> 
+      $pages = Page::getData();
       $data = array('pages' => $pages);
       $this->render('home', $data);
     }

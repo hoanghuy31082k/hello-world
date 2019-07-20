@@ -15,8 +15,13 @@
 					<td><?php echo $row->hoten; ?></td>
 					<td><?php echo $row->tuoi; ?></td>
 					<td>
-						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="width: 90px; height: 30px ; font-size: 12px; float: center;">Xoá bảng</button>
-						<div id="myModal" class="modal fade" role="dialog">
+					<!-- Ở đây thêm Id cho DataTarget để khi Click nó hiểu mình dùng PopUp của thằng nào ...
+						Nếu không có thì khi em click popup nó tự động lấy thằng popUp đầu tiên
+						Vậy nên em không thể xoa thằng ID nào khác 1 =))))z 
+						--Done--
+					 -->
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $row->id ?>" style="width: 90px; height: 30px ; font-size: 12px; float: center;">Xoá bảng</button>
+						<div id="myModal<?php echo $row->id ?>" class="modal fade" role="dialog">
 						  <div class="modal-dialog">
 
 						    <div class="modal-content">
@@ -28,7 +33,7 @@
 						        <p>Bạn có muốn xoá database hay không?</p>
 						      </div>
 						      <div class="modal-footer">
-						        <a href="?controller=pages&action=home&id=<?php echo $row->id; ?>" class="btn btn-default" style="color: green">Có</a>
+						        <a href="?controller=pages&action=xoabang&id=<?php echo $row->id; ?>" class="btn btn-default" style="color: green">Có</a>
 						        <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
 						      </div>
 						    </div>
