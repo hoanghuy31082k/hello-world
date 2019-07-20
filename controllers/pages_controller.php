@@ -30,15 +30,13 @@ class PagesController extends BaseController
   {
     if(isset($_GET['id'])) {
       $id = $_GET['id'];
-      $pages = Page::xoabang($id);
+      echo $id;
+      $status = Page::xoabang($id);
+      $pages = Page::getData();
       $data = array('pages' => $pages);
       $this->render('home', $data);
     }
-    else {
-      PagesController::home;
-    }
-  }
-
+  }  
   public function error()
   {
     $this->render('error');

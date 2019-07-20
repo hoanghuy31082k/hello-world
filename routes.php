@@ -1,6 +1,6 @@
 <?php
 $controllers = array(
-  'pages' => ['home', 'error', 'timkiem'],
+  'pages' => ['home', 'error', 'timkiem','xoabang'],
 );
 if (!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller])) {
   $controller = 'pages';

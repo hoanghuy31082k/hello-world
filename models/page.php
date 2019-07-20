@@ -28,7 +28,7 @@ class Page
         $list = [];
         try {
             $db = DB::getInstance();
-            $req = $db -> query('SELECT * FROM dsnv WHERE id=$id');
+            $req = $db -> query('SELECT * FROM dsnv WHERE id=' .$id. ';');
             foreach ($req->fetchAll() as $item) {
                 $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
             }
@@ -38,16 +38,21 @@ class Page
         }
     }
     public static function xoabang($id) {
-        $list = [];
+        $result = array('status','mess');
         try {
             $db = DB::getInstance();
-            $req = $db -> query('DELETE FROM dsnv WHERE id = "$id"');
-            foreach ($req->fetchAll() as $item) {
-                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+            $query = "DELETE FROM dsnv WHERE id=" .$id. ";";
+            if ($db -> exec($query) !== false) {
+                $result['status']=true;
+                $result['mess']='Xoá thành công';
+            } else {
+                $result['status']=false;
+                $result['mess']='Xoá thất bại';
             }
-            return $list;
         } catch (Exception $e) {
-            print("Error: "+$e);
+            $result['status']=false;
+            $result['mess']='Error: ' +$e;
         }
+        return $result;
     }
 }
