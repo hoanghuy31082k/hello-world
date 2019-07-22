@@ -24,15 +24,19 @@ class Page
             print("Error: "+$e);
         }
     }
-    public static function timkiem($id) {
+    public static function timkiem($tukhoa) {
         $list = [];
         try {
-            $db = DB::getInstance();
-            $req = $db -> query('SELECT * FROM dsnv WHERE id=' .$id. ';');
-            foreach ($req->fetchAll() as $item) {
-                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+            if (preg_match("/\W/",$tukhoa)) {
+                return NULL;
+            } else {
+                $db = DB::getInstance();
+                $req = $db -> query("SELECT * FROM dsnv WHERE id LIKE N'%$tukhoa%' OR hoten LIKE N'%$tukhoa%' OR tuoi LIKE N'%$tukhoa%';");
+                foreach ($req->fetchAll() as $item) {
+                    $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+                }
+                return $list;
             }
-            return $list;
         } catch (Exception $e) {
             print("Error: "+$e);
         }

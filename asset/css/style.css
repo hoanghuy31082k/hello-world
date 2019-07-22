@@ -3,13 +3,14 @@
 }
 
 header a {
-	text-decoration: none;
+	text-decoration: none !important;
 }
 
 header {
 	background-color: #ff9ff3;
 	height: 60px;
 	text-transform: uppercase;
+	position: relative;
 }
 
 .logo {
@@ -30,7 +31,6 @@ header {
 .menu a:hover {
 	height: 100%;
 	background: #f368e0 ;
-	text-decoration: none;
 	color: white;
 }
 .menu a{
@@ -44,6 +44,14 @@ header {
 	float: right;
 	padding-right: 10px;
 }
+
+header form {
+	display: block;
+	float: right;
+	position: absolute;
+	top:20px;
+	right: 0;
+}
 .search-box {
 	border: none;
 	background: none;
@@ -51,8 +59,8 @@ header {
 }
 
 .submit {
-	border: none;
-	background-color: linear-gradient(#ff9f43,#ee5253);
+	border: 2px solid #f368e0;
+	background: linear-gradient(#ff9f43,#ee5253);
 }
 
 .table h1{

@@ -12,23 +12,23 @@
   <body>
     <div class="container">
       <header>
-        <ul style="margin: 0;">
-          <a class="logo" href="#">Bun's Site</a>
+        <ul>
+          <a class="logo" href="?controller=pages&action=home">Bun's Site</a>
           <div class="menu">
-            <a href="#">Home</a>
+            <a href="?controller=pages&action=home">Home</a>
             <a href="www.google.com">Google</a>
           </div>
+          <form class="searchbar" action="" method="GET">
+            <table class="table-timkiem">
+              <tr>
+                <input type="hidden" name="controller" value="pages">
+                <input type="hidden" name="action" value="timkiem">
+                <td><input class="search-box" type="text" name="tukhoa" placeholder="Nhập id của bạn vào đây"></td>
+                <td><button type="submit" class="submit">Tìm kiếm</button></td>              
+              </tr>
+            </table>
+          </form>
         </ul>
-        <form class="searchbar" action="" method="GET">
-          <table class="table-timkiem">
-            <tr>
-              <input type="hidden" name="controller" value="pages">
-              <input type="hidden" name="action" value="timkiem">
-              <td><input class="search-box" type="text" name="tukhoa" placeholder="Nhập id của bạn vào đây"></td>
-              <td><button type="submit" class="submit">Tìm kiếm</button></td>              
-            </tr>
-          </table>
-        </form>
       </header>
       <main>
           <?=@$content?>

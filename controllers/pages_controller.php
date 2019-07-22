@@ -19,11 +19,15 @@ class PagesController extends BaseController
   public function timkiem()
   {
     if(isset($_GET['tukhoa'])) {
-      $id = $_GET['tukhoa'];
+      $tukhoa = $_GET['tukhoa'];
     }
-    $pages_s = Page::timkiem($id);
-    $data = array('pages' => $pages);
-    $this->render('timkiem', $data);
+    $pages_s = Page::timkiem($tukhoa);
+    if ($pages_s===NULL) {
+      $this->render('error');
+    } else {
+      $data = array('pages' => $pages_s);
+      $this->render('timkiem', $data);
+    }
   }
 
   public function xoabang()
