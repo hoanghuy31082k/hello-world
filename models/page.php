@@ -59,4 +59,22 @@ class Page
         }
         return $result;
     }
+    public static function them($id,$hoten,$tuoi) {
+        $result = array('status','mess');
+        try {
+            $db = DB::getInstance();
+            $query = "INSERT INTO dsnv (id, hoten, tuoi) VALUES ('$id', '$hoten', '$tuoi');";
+            if ($db -> exec($query) !== false) {
+                $result['status']=true;
+                $result['mess']='Thêm thành công';
+            } else {
+                $result['status']=false;
+                $result['mess']='Thêm thất bại';
+            }
+        } catch (Exception $e) {
+            $result['status']=false;
+            $result['mess']='Error: ' +$e;
+        }
+        return $result;
+    }
 }

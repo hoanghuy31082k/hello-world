@@ -39,4 +39,14 @@
 			<?php endforeach ?>
 		</tr>
 	</tbody>
+	<tfoot>
+		<form action="?controller=pages&action=them" method="POST">
+			<tr>
+				<td><input type="text" name="id" placeholder="Nhập id"></td>
+				<td><input type="text" name="hoten" placeholder="Nhập tên"></td>
+				<td><input type="text" name="tuoi" placeholder="Nhập tuổi"></td>
+				<td><a href="?controller=pages&action=them"><input type="submit" name="add" value="Thêm"></a></td>
+			</tr>
+		</form>
+	</tfoot>
 </table>

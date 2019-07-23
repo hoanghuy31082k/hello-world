@@ -34,11 +34,25 @@ class PagesController extends BaseController
   {
     if(isset($_GET['id'])) {
       $id = $_GET['id'];
-      echo $id;
       $status = Page::xoabang($id);
+      if ($status['status']===false) {
+        $this->render('error');
+      }
       $pages = Page::getData();
       $data = array('pages' => $pages);
       $this->render('home', $data);
+    }
+  }
+  public function them()
+  {
+    if(isset($_POST['add'])) {
+      $id = $_POST['id'];
+      $hoten = $_POST['hoten'];
+      $tuoi = $_POST['tuoi'];
+    $status = Page::them($id,$hoten,$tuoi);
+    $pages = Page::getData();
+    $data = array('pages' => $pages);
+    $this->render('home', $data);
     }
   }  
   public function error()
