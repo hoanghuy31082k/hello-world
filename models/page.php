@@ -27,15 +27,15 @@ class Page
     public static function timkiem($tukhoa) {
         $list = [];
         try {
-            if (preg_match("/\W/",$tukhoa)) {
-                return NULL;
-            } else {
+            if (preg_match("/\w/",$tukhoa)) {
                 $db = DB::getInstance();
                 $req = $db -> query("SELECT * FROM dsnv WHERE id LIKE N'%$tukhoa%' OR hoten LIKE N'%$tukhoa%' OR tuoi LIKE N'%$tukhoa%';");
                 foreach ($req->fetchAll() as $item) {
                     $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
                 }
                 return $list;
+            } else {
+                return NULL;                
             }
         } catch (Exception $e) {
             print("Error: "+$e);
@@ -76,5 +76,36 @@ class Page
             $result['mess']='Error: ' +$e;
         }
         return $result;
+    }
+    public static function update($id,$hoten,$tuoi) {
+        $result = array('status','mess');
+        try {
+            $db = DB::getInstance();
+            $query = "UPDATE dsnv SET hoten='$hoten' , tuoi='$tuoi' WHERE id='$id';";
+            if ($db -> exec($query) !== false) {
+                $result['status']=true;
+                $result['mess']='Thêm thành công';
+            } else {
+                $result['status']=false;
+                $result['mess']='Thêm thất bại';
+            }
+        } catch (Exception $e) {
+            $result['status']=false;
+            $result['mess']='Error: ' +$e;
+        }
+        return $result;
+    }
+    public static function getDataid($id) {
+        $list = [];
+        try {
+            $db = DB::getInstance();
+            $req = $db -> query("SELECT * FROM dsnv WHERE id ='$id';");
+            foreach ($req->fetchAll() as $item) {
+                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+            }
+            return $list;
+        } catch (Exception $e) {
+            print("Error: "+$e);
+        }
     }
 }

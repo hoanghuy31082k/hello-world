@@ -1,5 +1,5 @@
 <table class="table">
-	<h1>Danh sách thành viên</h1>
+	<h1>Cập nhập thành viên</h1>
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -11,9 +11,12 @@
 		<tr>
 			<?php foreach ($pages as $row): ?>
 				<tr>
-					<td><?php echo $row->id; ?></td>
-					<td><?php echo $row->hoten; ?></td>
-					<td><?php echo $row->tuoi; ?></td>
+					<form action="?controller=pages&action=updatesuccess" method="POST">
+						<td><input type="text" name="id" placeholder="Nhập id" value="<?php echo $row->id; ?>"></td>
+						<td><input type="text" name="hoten" placeholder="Nhập tên" value="<?php echo $row->hoten; ?>"></td>
+						<td><input type="text" name="tuoi" placeholder="Nhập tuổi" value="<?php echo $row->tuoi; ?>"></td>
+						<td><input type="submit" name="ok" value="Cập nhật"></td>
+					</form>
 					<td>
 						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $row->id; ?>" style="width: 90px; height: 30px ; font-size: 12px; float: center;">Xoá bảng</button>
 						<div id="myModal<?php echo $row->id; ?>" class="modal fade" role="dialog">
@@ -35,21 +38,8 @@
 						  </div>
 						</div>
 					</td>
-					<td>
-						<a href="?controller=pages&action=update&id=<?php echo $row->id; ?>">Chỉnh sửa</a>
-					</td>
 				</tr>
 			<?php endforeach ?>
 		</tr>
 	</tbody>
-	<tfoot>
-		<form action="?controller=pages&action=them" method="POST">
-			<tr>
-				<td><input type="text" name="id" placeholder="Nhập id"></td>
-				<td><input type="text" name="hoten" placeholder="Nhập tên"></td>
-				<td><input type="text" name="tuoi" placeholder="Nhập tuổi"></td>
-				<td><a href="?controller=pages&action=them"><input type="submit" name="add" value="Thêm"></a></td>
-			</tr>
-		</form>
-	</tfoot>
 </table>
