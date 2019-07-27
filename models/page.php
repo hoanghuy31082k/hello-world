@@ -17,7 +17,7 @@ class Page
             $db = DB::getInstance();
             $req = $db->query('SELECT * FROM dsnv');
             foreach ($req->fetchAll() as $item) {
-                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+                $list[] = new Page($item['id'], $item['ten'], $item['tuoi']);
             }
             return $list;
         } catch (Exception $e) {

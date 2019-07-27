@@ -81,4 +81,15 @@ class PagesController extends BaseController
   {
     $this->render('error');
   }
+  # example AJAX delete ----- 
+  public function deleteUser()
+  {
+    if(isset($_POST['id'])) {
+      # Get id từ URL 
+      $id = $_POST['id'];
+      $status = Page::xoabang($id);
+      echo json_encode($status);
+      die();
+    }
+  }
 }
