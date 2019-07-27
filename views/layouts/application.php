@@ -30,6 +30,12 @@
           </form>
         </ul>
       </header>
+      <section style="width: 100%;">
+        <form action="?controller=pages&action=timkiem" method="GET">
+          <input type="text" name="tukhoa2" placeholder="Nhập từ tìm bằng Ajax">
+          <input type="submit" value="Gửi">
+        </form>
+      </section>
       <main>
           <?=@$content?>
       </main>

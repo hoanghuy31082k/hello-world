@@ -76,6 +76,15 @@ class PagesController extends BaseController
       $this->render('home', $data);
     }
   }
+
+  public function xoa() {
+    if (isset($_POST['id'])) {
+      $id = $_POST['id'];
+      $status = Page::xoabang($id);
+      echo json_encode($status);
+      die();
+    }
+  }
   public function error()
   {
     $this->render('error');

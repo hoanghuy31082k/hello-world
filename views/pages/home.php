@@ -10,7 +10,7 @@
 	<tbody>
 		<tr>
 			<?php foreach ($pages as $row): ?>
-				<tr>
+				<tr id="row_<?php echo $row->id; ?>">
 					<td><?php echo $row->id; ?></td>
 					<td><?php echo $row->hoten; ?></td>
 					<td><?php echo $row->tuoi; ?></td>
@@ -25,11 +25,11 @@
 						        <h4 class="modal-title">Yêu cầu nho nhỏ :))</h4>
 						      </div>
 						      <div class="modal-body">
-						        <p>Bạn có muốn xoá database hay không?</p>
+						        <div class="alert alert-warning" id="result-delete-<?php echo $row->id ?>">Bạn có muốn xoá database hay không?</div>
 						      </div>
 						      <div class="modal-footer">
-						        <a href="?controller=pages&action=xoabang&id=<?php echo $row->id; ?>" class="btn btn-default" style="color: green">Có</a>
-						        <button type="button" class="btn btn-default" data-dismiss="modal">Không</button>
+						         <button id="btn-delete-<?php echo $row->id ?>" type="button" onclick="delete(<?php echo $row->id ?>);" class="btn btn-default" style="color: green">Có</button>
+						        <button id="btn-cancel-<?php echo $row->id ?>" type="button" class="btn btn-default" data-dismiss="modal">Không</button>
 						      </div>
 						    </div>
 						  </div>
@@ -53,3 +53,33 @@
 		</form>
 	</tfoot>
 </table>
+<script type="text/javascript">
+	function delete(id) {
+		$.ajax ({
+			url : "?controller=pages&action=xoa";
+			type :"post";
+			data : {
+				id : id;
+			}
+			success : function (response) {
+				const result = $.parseJSON(response);
+				if(result.status)
+				{
+					$(`#row_${id}`).empty();
+					$(`#result-delete-${id}`).html();
+					$(`#result-delete-${id}`).html(result.mess);
+					$(`#result-delete-${id}`).removeClass("alert-warning");
+					$(`#result-delete-${id}`).addClass("alert-success");
+					$(`#btn-delete-${id}`).remove();
+					$(`#btn-cancel-${id}`).html("OK");
+				}
+				else {
+					$(`#result-delete-${id}`).html();
+					$(`#result-delete-${id}`).html(result.mess);
+					$(`#result-delete-${id}`).removeClass("alert-warning")
+					$(`#result-delete-${id}`).addClass("alert-danger")
+				}
+			}
+		})
+	}
+</script>
