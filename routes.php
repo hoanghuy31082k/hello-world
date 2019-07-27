@@ -1,8 +1,6 @@
 <?php
 $controllers = array(
-  # Mỗi khi thêm action hay Controller thì phải add vào Route
-  # Nếu không thì không thể sử dụng >>>>> 
-  'pages' => ['home', 'error', 'timkiem','xoabang'],
+  'pages' => ['home', 'error', 'timkiem','xoabang', 'them', 'update', 'updatesuccess'],
 );
 if (!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller])) {
   $controller = 'pages';

@@ -24,32 +24,84 @@ class Page
             print("Error: "+$e);
         }
     }
-    public static function timkiem($id) {
+    public static function timkiem($tukhoa) {
         $list = [];
         try {
-            $db = DB::getInstance();
-            $req = $db -> query('SELECT * FROM dsnv WHERE id=$id');
-            foreach ($req->fetchAll() as $item) {
-                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+            if (preg_match("/\w/",$tukhoa)) {
+                $db = DB::getInstance();
+                $req = $db -> query("SELECT * FROM dsnv WHERE id LIKE N'%$tukhoa%' OR hoten LIKE N'%$tukhoa%' OR tuoi LIKE N'%$tukhoa%';");
+                foreach ($req->fetchAll() as $item) {
+                    $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
+                }
+                return $list;
+            } else {
+                return NULL;                
             }
-            return $list;
         } catch (Exception $e) {
             print("Error: "+$e);
         }
     }
     public static function xoabang($id) {
-        # Câu query thì dùng như trên 
-        # Các lệnh DELETE CREATE UPDATE thì dùng exec như phía dưới mới chạy được.
-        $result = array('status', 'message');
+        $result = array('status','mess');
         try {
             $db = DB::getInstance();
-            $query = "DELETE FROM dsnv WHERE id = " .$id . ";";
-            if ($db->exec($query) !== false) {
-                $result['status'] = true;
-                $result['message'] = "Delete success";
+            $query = "DELETE FROM dsnv WHERE id=" .$id. ";";
+            if ($db -> exec($query) !== false) {
+                $result['status']=true;
+                $result['mess']='Xoá thành công';
             } else {
-                $result['status'] = false;
-                $result['message'] = "Something's wrong. Please try again!";
+                $result['status']=false;
+                $result['mess']='Xoá thất bại';
+            }
+        } catch (Exception $e) {
+            $result['status']=false;
+            $result['mess']='Error: ' +$e;
+        }
+        return $result;
+    }
+    public static function them($id,$hoten,$tuoi) {
+        $result = array('status','mess');
+        try {
+            $db = DB::getInstance();
+            $query = "INSERT INTO dsnv (id, hoten, tuoi) VALUES ('$id', '$hoten', '$tuoi');";
+            if ($db -> exec($query) !== false) {
+                $result['status']=true;
+                $result['mess']='Thêm thành công';
+            } else {
+                $result['status']=false;
+                $result['mess']='Thêm thất bại';
+            }
+        } catch (Exception $e) {
+            $result['status']=false;
+            $result['mess']='Error: ' +$e;
+        }
+        return $result;
+    }
+    public static function update($id,$hoten,$tuoi) {
+        $result = array('status','mess');
+        try {
+            $db = DB::getInstance();
+            $query = "UPDATE dsnv SET hoten='$hoten' , tuoi='$tuoi' WHERE id='$id';";
+            if ($db -> exec($query) !== false) {
+                $result['status']=true;
+                $result['mess']='Thêm thành công';
+            } else {
+                $result['status']=false;
+                $result['mess']='Thêm thất bại';
+            }
+        } catch (Exception $e) {
+            $result['status']=false;
+            $result['mess']='Error: ' +$e;
+        }
+        return $result;
+    }
+    public static function getDataid($id) {
+        $list = [];
+        try {
+            $db = DB::getInstance();
+            $req = $db -> query("SELECT * FROM dsnv WHERE id ='$id';");
+            foreach ($req->fetchAll() as $item) {
+                $list[] = new Page($item['id'], $item['hoten'], $item['tuoi']);
             }
         } catch (Exception $e) {
             $result['status'] = false;

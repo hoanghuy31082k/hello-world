@@ -1,0 +1,73 @@
+* {
+	font-family: sans-serif;
+}
+
+header a {
+	text-decoration: none !important;
+}
+
+header {
+	background-color: #ff9ff3;
+	height: 60px;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.logo {
+	font-size: 40px;
+	font-weight: 1000;
+	color: black;
+	float: left;
+}
+
+
+.menu {
+	display: inline-block;
+	padding: 15px;
+	margin-left: 70px;
+	line-height: 30px;
+}
+
+.menu a:hover {
+	height: 100%;
+	background: #f368e0 ;
+	color: white;
+}
+.menu a{
+	font-size: 20px;
+	color: white;
+	margin: 0;
+	padding: 10px;
+}
+.table-timkiem {
+	display: inline-block;
+	float: right;
+	padding-right: 10px;
+}
+
+header form {
+	display: block;
+	float: right;
+	position: absolute;
+	top:20px;
+	right: 0;
+}
+.search-box {
+	border: none;
+	background: none;
+	border-bottom: 2px solid #f368e0;
+}
+
+.submit {
+	border: 2px solid #f368e0;
+	background: linear-gradient(#ff9f43,#ee5253);
+}
+
+.table h1{
+	text-align: center;
+}
+footer {
+	margin: 0px;
+	text-align: center;
+	background-color: #9E9E9E; 
+}

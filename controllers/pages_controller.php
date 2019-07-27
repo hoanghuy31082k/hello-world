@@ -19,11 +19,15 @@ class PagesController extends BaseController
   public function timkiem()
   {
     if(isset($_GET['tukhoa'])) {
-      $id = $_GET['tukhoa'];
+      $tukhoa = $_GET['tukhoa'];
     }
-    $pages_s = Page::timkiem($id);
-    $data = array('pages' => $pages);
-    $this->render('timkiem', $data);
+    $pages_s = Page::timkiem($tukhoa);
+    if ($pages_s===NULL) {
+      $this->render('error');
+    } else {
+      $data = array('pages' => $pages_s);
+      $this->render('home', $data);
+    }
   }
 
   public function xoabang()
@@ -31,18 +35,48 @@ class PagesController extends BaseController
     if(isset($_GET['id'])) {
       # Get id từ URL 
       $id = $_GET['id'];
-      # Call function Delete từ Model  
       $status = Page::xoabang($id);
-      # Đây là function load lại page ---> 
+      if ($status['status']===false) {
+        $this->render('error');
+      }
       $pages = Page::getData();
       $data = array('pages' => $pages);
       $this->render('home', $data);
     }
-    else {
-      PagesController::home;
+  }
+  public function them()
+  {
+    if(isset($_POST['add'])) {
+      $id = $_POST['id'];
+      $hoten = $_POST['hoten'];
+      $tuoi = $_POST['tuoi'];
+      $status = Page::them($id,$hoten,$tuoi);
+      $pages = Page::getData();
+      $data = array('pages' => $pages);
+      $this->render('home', $data);
     }
   }
-
+  public function update()
+  {
+    if (isset($_GET['id'])) {
+      $id = $_GET['id'];
+      $pages = Page::getDataid($id);
+      $data = array('pages' => $pages);
+      $this->render('update', $data);
+    }
+  }
+  public function updatesuccess()
+  {
+    if(isset($_POST['ok'])) {
+      $id = $_POST['id'];
+      $hoten = $_POST['hoten'];
+      $tuoi = $_POST['tuoi'];
+      $status = Page::update($id,$hoten,$tuoi);
+      $pages = Page::getData();
+      $data = array('pages' => $pages);
+      $this->render('home', $data);
+    }
+  }
   public function error()
   {
     $this->render('error');
