@@ -38,6 +38,6 @@ function datalist() {
 		},
 		success : function (response) {
 			const result = $.parseJSON(response);
-			document.write('aaa');
+			document.write(result);
 	});
 }
