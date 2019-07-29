@@ -89,4 +89,9 @@ class PagesController extends BaseController
   {
     $this->render('error');
   }
+  public function getdatalist() {
+    $list = Page::getData();
+    echo json_encode($list);
+    die();
+  }
 }

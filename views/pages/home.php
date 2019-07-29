@@ -16,7 +16,11 @@
 					<td><?php echo $row->tuoi; ?></td>
 					<td>
 						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal<?php echo $row->id; ?>" style="width: 90px; height: 30px ; font-size: 12px; float: center;">Xoá bảng</button>
-						<div id="myModal<?php echo $row->id; ?>" class="modal fade" role="dialog">
+					</td>
+					<td>
+						<a href="?controller=pages&action=update&id=<?php echo $row->id; ?>">Chỉnh sửa</a>
+					</td>
+					<div id="myModal<?php echo $row->id; ?>" class="modal fade" role="dialog">
 						  <div class="modal-dialog">
 
 						    <div class="modal-content">
@@ -28,16 +32,12 @@
 						        <div class="alert alert-warning" id="result-delete-<?php echo $row->id ?>">Bạn có muốn xoá database hay không?</div>
 						      </div>
 						      <div class="modal-footer">
-						         <button id="btn-delete-<?php echo $row->id ?>" type="button" onclick="delete(<?php echo $row->id ?>);" class="btn btn-default" style="color: green">Có</button>
+						         <button id="btn-delete-<?php echo $row->id ?>" type="button" onclick="xoauser(<?php echo $row->id ?>);" class="btn btn-default" style="color: green">Có</button>
 						        <button id="btn-cancel-<?php echo $row->id ?>" type="button" class="btn btn-default" data-dismiss="modal">Không</button>
 						      </div>
 						    </div>
 						  </div>
 						</div>
-					</td>
-					<td>
-						<a href="?controller=pages&action=update&id=<?php echo $row->id; ?>">Chỉnh sửa</a>
-					</td>
 				</tr>
 			<?php endforeach ?>
 		</tr>
@@ -53,33 +53,5 @@
 		</form>
 	</tfoot>
 </table>
-<script type="text/javascript">
-	function delete(id) {
-		$.ajax ({
-			url : "?controller=pages&action=xoa";
-			type :"post";
-			data : {
-				id : id;
-			}
-			success : function (response) {
-				const result = $.parseJSON(response);
-				if(result.status)
-				{
-					$(`#row_${id}`).empty();
-					$(`#result-delete-${id}`).html();
-					$(`#result-delete-${id}`).html(result.mess);
-					$(`#result-delete-${id}`).removeClass("alert-warning");
-					$(`#result-delete-${id}`).addClass("alert-success");
-					$(`#btn-delete-${id}`).remove();
-					$(`#btn-cancel-${id}`).html("OK");
-				}
-				else {
-					$(`#result-delete-${id}`).html();
-					$(`#result-delete-${id}`).html(result.mess);
-					$(`#result-delete-${id}`).removeClass("alert-warning")
-					$(`#result-delete-${id}`).addClass("alert-danger")
-				}
-			}
-		})
-	}
-</script>
+<a onclick="datalist()">alo</a>
+<script type="text/javascript" src="asset/js/dauphongdauphay.js"></script>
