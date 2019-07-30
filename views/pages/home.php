@@ -7,8 +7,8 @@
 			<th>Tuổi</th>
 		</tr>
 	</thead>
-	<tbody>
-		<tr>
+	<tbody id="list">
+		<!-- <tr>
 			<?php foreach ($pages as $row): ?>
 				<tr id="row_<?php echo $row->id; ?>">
 					<td><?php echo $row->id; ?></td>
@@ -40,7 +40,7 @@
 						</div>
 				</tr>
 			<?php endforeach ?>
-		</tr>
+		</tr> -->
 	</tbody>
 	<tfoot>
 		<form action="?controller=pages&action=them" method="POST">
@@ -53,5 +53,5 @@
 		</form>
 	</tfoot>
 </table>
-<a onclick="datalist()">alo</a>
+<button onclick="datalist()">Hmmmm</button>
 <script type="text/javascript" src="asset/js/dauphongdauphay.js"></script>

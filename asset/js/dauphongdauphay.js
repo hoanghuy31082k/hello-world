@@ -28,16 +28,28 @@ function xoauser(id) {
 }
 
 function datalist() {
+	console.log(1);
 	$.ajax ({
 		url : "index.php?controller=pages&action=getdatalist",
-		type :"post",
-		data : {
-			id : id,
-			ten : hoten,
-			tuoi : tuoi
-		},
+		type : "get",
 		success : function (response) {
 			const result = $.parseJSON(response);
-			document.write(result);
+			for (var i = 0;i <= result.length - 1; i++) {
+				var createtd_id = document.createElement("td");
+				var createtd_hoten = document.createElement("td");
+				var createtd_tuoi = document.createElement("td");
+				createtd_id.innerHTML= result[i].id;
+				createtd_hoten.innerHTML= result[i].hoten;
+				createtd_tuoi.innerHTML= result[i].tuoi;
+				$(`#list`).append(`<tr id="row_${result[i].id}"></tr>`);
+				$(`#row_${result[i].id}`).append(createtd_id);
+				$(`#row_${result[i].id}`).append(createtd_hoten);
+				$(`#row_${result[i].id}`).append(createtd_tuoi);
+			}
+		}
 	});
+}
+
+function alo() {
+	alert('1');
 }
