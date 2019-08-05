@@ -19,5 +19,4 @@
 		</form>
 	</tfoot>
 </table>
-<button onclick="datalist()">Hmmmm</button>
 <script type="text/javascript" src="asset/js/dauphongdauphay.js"></script>

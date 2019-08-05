@@ -26,6 +26,26 @@ function xoauser(id) {
 		}
 	});
 }
+function checklogin(username,password) {
+	$.ajax ({
+		url : "index.php?controller=pages&action=checklogin",
+		type :"post",
+		data : {
+			username : username,
+			password : password,
+		},
+		success : function (response) {
+			const result = $.parseJSON(response);
+			if(result.status)
+			{
+				$(`#login-status`).append(`${result.status}`);
+			}
+			else {
+				$(`#login-status`).append(`${result.status}`);
+			}
+		}
+	});
+}
 function datalist() {
 	$.ajax ({
 		url : "index.php?controller=pages&action=getdatalist",

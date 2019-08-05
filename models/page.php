@@ -4,8 +4,7 @@ class Page
     public $id;
     public $hoten;
     public $tuoi;
-    public function __construct($id, $hoten, $tuoi)
-    {
+    public function __construct($id , $hoten , $tuoi) {
         $this->id = $id;
         $this->hoten = $hoten;
         $this->tuoi = $tuoi;
