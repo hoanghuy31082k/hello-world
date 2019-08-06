@@ -26,7 +26,7 @@ function xoauser(id) {
 		}
 	});
 }
-function checklogin(username,password) {
+function checklogin() {
 	$.ajax ({
 		url : "index.php?controller=pages&action=checklogin",
 		type :"post",
@@ -38,10 +38,10 @@ function checklogin(username,password) {
 			const result = $.parseJSON(response);
 			if(result.status)
 			{
-				$(`#login-status`).append(`${result.status}`);
+				$(`#login-status`).html(result.mess);
 			}
 			else {
-				$(`#login-status`).append(`${result.status}`);
+				$(`#login-status`).html(result.mess);
 			}
 		}
 	});

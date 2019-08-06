@@ -10,7 +10,7 @@
 			<td><input type="password" name="password" placeholder="mật khẩu"></td>
 		</tr>
 		<tr>
-			<td><button onclick="checklogin(username,password);">Đăng nhập</button></td>
+			<td><button onclick="checklogin();">Đăng nhập</button></td>
 		</tr>
 	</table>
 	<h4 id="login-status"></h4>
