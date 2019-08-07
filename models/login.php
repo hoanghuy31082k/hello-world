@@ -29,4 +29,3 @@ class Account
         return $result;
     }
 }
-?>

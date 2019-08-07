@@ -1,4 +1,4 @@
-<form method="POST">
+
 	<caption>Đăng nhập</caption>
 	<table>
 		<tr>
@@ -14,5 +14,4 @@
 		</tr>
 	</table>
 	<h4 id="login-status"></h4>
-</form>
 <script type="text/javascript" src="asset/js/dauphongdauphay.js"></script>

@@ -30,10 +30,6 @@ function checklogin() {
 	$.ajax ({
 		url : "index.php?controller=pages&action=checklogin",
 		type :"post",
-		data : {
-			username : username,
-			password : password,
-		},
 		success : function (response) {
 			const result = $.parseJSON(response);
 			if(result.status)
