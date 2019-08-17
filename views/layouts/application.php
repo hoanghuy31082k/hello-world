@@ -28,7 +28,7 @@
               </tr>
             </table>
           </form>
-          <a href="?controller=account&action=login">Đăng nhập</a>
+          <a href="?controller=account&action=login">JWT</a>
         </ul>
       </header>
       <section style="width: 100%;">

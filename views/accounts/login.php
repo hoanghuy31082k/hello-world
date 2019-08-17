@@ -1,16 +1,13 @@
-<caption>Đăng nhập</caption>
-<table>
-	<tr>
-		<td>Tài khoản: </td>
-		<td><input type="text" name="username" placeholder="tài khoản"></td>
-	</tr>
-	<tr>
-		<td>Mật khẩu </td>
-		<td><input type="password" name="password" placeholder="mật khẩu"></td>
-	</tr>
-	<tr>
-		<td><button onclick="checklogin();">Đăng nhập</button></td>
-	</tr>
-</table>
-<h4 id="login-status"></h4>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a id="login">Đăng nhập</a></li>
+      <li><a id="signup">Đăng ký</a></li>
+    </ul>
+  </div>
+</nav>
+<div id="response"></div>
+<div id="content"></div>
 <script type="text/javascript" src="asset/js/dauphongdauphay.js"></script>
+<script type="text/javascript" src="asset/js/jwt.js"></script>
