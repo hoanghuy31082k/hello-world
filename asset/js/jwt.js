@@ -10,26 +10,53 @@ function clearResponse(){
 }
 
 function showLogin() {
-	var html = `<caption>Đăng nhập</caption>
-				<table>
-					<tr>
-						<td>Tài khoản: </td>
-						<td><input type="text" name="username" placeholder="tài khoản"></td>
-					</tr>
-					<tr>
-						<td>Mật khẩu </td>
-						<td><input type="password" name="password" placeholder="mật khẩu"></td>
-					</tr>
-					<tr>
-						<td><button onclick="checklogin();">Đăng nhập</button></td>
-					</tr>
-				</table>
-				<h4 id="login-status"></h4>`;
+	var html = `<div class="container">
+				  <h2>Đăng nhập</h2>
+				  <form>
+				    <div class="form-group">
+				      <label for="username">Tài khoản:</label>
+				      <input type="text" class="form-control" id="username" placeholder="Nhập tài khoản" name="username">
+				    </div>
+				    <div class="form-group">
+				      <label for="pwd">Mật khẩu:</label>
+				      <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="pwd">
+				    </div>
+				    <div class="checkbox">
+				      <label><input type="checkbox" name="remember"> Ghi nhớ đăng nhập</label>
+				    </div>
+				    <button type="submit" class="btn btn-default">Đăng nhập</button>
+				  </form>
+				</div>`;
 	$('#content').html(html);
     clearResponse();
     showLogout();
 }
 
-function showLogout {
-	
+function showhome() {
+	var html = `<h2>Đây là trang home</h2>`;
+	$('#content').html(html);
+    clearResponse();
+}
+
+function showSignup() {
+	var html = `<div class="container">
+				  <h2>Đăng nhập</h2>
+				  <form>
+				    <div class="form-group">
+				      <label for="username">Tài khoản:</label>
+				      <input type="text" class="form-control" id="username" placeholder="Nhập tài khoản" name="username">
+				    </div>
+				    <div class="form-group">
+				      <label for="pwd">Mật khẩu:</label>
+				      <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu" name="pwd">
+				    </div>
+				    <div class="form-group">
+				      <label for="re-pwd">Nhập lại mật khẩu:</label>
+				      <input type="password" class="form-control" id="re-password" placeholder="Nhập lại mật khẩu" name="re-pwd">
+				    </div>
+				    <button type="submit" class="btn btn-default">Đăng ký</button>
+				  </form>
+				</div>`;
+	$('#content').html(html);
+    clearResponse();
 }
